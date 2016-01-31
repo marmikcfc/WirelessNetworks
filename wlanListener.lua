@@ -1,6 +1,6 @@
 file = io.open("test.txt", "w")
 radiotap_present = Field.new("radiotap.present.dbm_antsignal")
-rssiInfo = Field.new("radiotap.dbm_antsignal")
+rssiInfo = Field.new("wlancap.normrssi_antsignal")
 channelInfo=Field.new("radiotap.channel.freq")
 ssidInfo = Field.new("wlan_mgt.ssid")
 
@@ -22,10 +22,10 @@ function tap.packet(pinfo,tvb,tapdata)
     print(" ")
   --  print("In packets")
     
-    local flags = radiotap_present();
-    if(flags) then
-        print("Radiotap SSI present")
-    end
+    -- local flags = radiotap_present();
+    -- if(flags) then
+    --     print("Radiotap SSI present")
+    -- end
 
     local rssiStrengh = rssiInfo()
     local rssistr = tostring(rssiStrengh)
