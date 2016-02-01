@@ -1,0 +1,36 @@
+tomas42          -72          2412
+ARRIS-4132          -73          2412
+xfinitywifi          -75          2412
+tomas42          -72          2412
+HOME-CB71          -72          2412
+xfinitywifi          -73          2412
+tomas42          -72          2412
+RiveraWifi1          -60          2442
+Kings Landing 10C @ 2.4Ghz          -45          2467
+Stevens          -82          5745
+HOME-9ECD-2.4          -80          2437
+xfinitywifi          -76          2437
+xfinitywifi          -57          2437
+P.R-2.4          -76          2412
+Sammax1234          -72          2432
+xfinitywifi          -81          2437
+Kings Landing 10C @ 2.4Ghz          -47          2467
+P.R-2.4          -75          2412
+HOME-CB71          -76          2412
+Sammax1234          -65          2437
+VZJ2Q          -81          2437
+J.E          -79          2437
+xfinitywifi          -74          2437
+WH NETWORK          -54          2457 
+GetThru          -86          5785
+RiveraWifi1          -57          2432
+VZJ2Q          -75          2437
+Sammax1234          -62          2437 
+xfinitywifi          -77          2437
+WH NETWORK          -58          2457
+RiveraWifi1          -61          2437
+4BXLJ          -81          2412
+HOME-9ECD-2.4          -78          2437
+xfinitywifi          -64          2437
+Kings Landing 10C @ 2.4Ghz          -49          2467
+Stevens          -81          5745

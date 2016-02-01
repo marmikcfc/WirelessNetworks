@@ -11,7 +11,8 @@ ssidInfo = Field.new("wlan_mgt.ssid")
 -- wireshark into it), it has to be one of the following currently: 
 -- "actrace", "ansi_a", "ansi_map", "bacapp", "eth", "h225", "http", "ip", "ldap", 
 -- "smb", "smb2", "tcp", "udp", "wlan", and "frame"
-local tap = Listener.new("wlan","wlan.fc.type_subtype == 0x08")
+local tap = Listener.new("wlan","wlan.fc.type_subtype == 0x08" && ("wlan.fc.type_subtype == 0x15") || ("wlan.fc.type_subtype == 0x0e")
+")
 
 
 -- we will be called once for every IP Header.

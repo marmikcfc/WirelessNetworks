@@ -1,7 +1,5 @@
-file = io.open("test.txt", "w")
-radiotap_present = Field.new("radiotap.present.dbm_antsignal")
-rssiInfo = Field.new("wlancap.normrssi_antsignal")
-channelInfo=Field.new("radiotap.channel.freq")
+file = io.open("nearbyAP.txt", "w")
+
 ssidInfo = Field.new("wlan_mgt.ssid")
 
 
@@ -13,7 +11,8 @@ ssidInfo = Field.new("wlan_mgt.ssid")
 -- wireshark into it), it has to be one of the following currently: 
 -- "actrace", "ansi_a", "ansi_map", "bacapp", "eth", "h225", "http", "ip", "ldap", 
 -- "smb", "smb2", "tcp", "udp", "wlan", and "frame"
-local tap = Listener.new("wlan","wlan.fc.type_subtype == 0x08")
+local tap = Listener.new("wlan","wlan.fc.type_subtype == 0x08" && ("wlan.fc.type_subtype == 0x15") || ("wlan.fc.type_subtype == 0x0e")
+")
 
 
 -- we will be called once for every IP Header.
@@ -27,21 +26,23 @@ function tap.packet(pinfo,tvb,tapdata)
     --     print("Radiotap SSI present")
     -- end
 
-    local rssiStrengh = rssiInfo()
-    local rssistr = tostring(rssiStrengh)
-    print(rssistr)
+    -- local rssiStrengh = rssiInfo()
+    -- local rssistr = tostring(rssiStrengh)
+    -- print(rssistr)
 
-    local channel = channelInfo()
-    local channelString = tostring(channel)
-    print(channelString)
+    -- local channel = channelInfo()
+    -- local channelString = tostring(channel)
+    -- print(channelString)
 
     local ssid = ssidInfo()
     local ssidString = tostring(ssid)
     print(ssidString)
     print(" ")
 
-    file:write(ssidString .. " " .. channelString .. " " .. rssistr ..  "\n")
-    file:write()
+    if(ssidString) then
+        file:write(ssidString .. "\n")
+        file:write()
+    end
 
 end
 
