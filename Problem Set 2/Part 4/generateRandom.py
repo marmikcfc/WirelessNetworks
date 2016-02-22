@@ -14,30 +14,61 @@ import sys
 
 
 
-def generateData():
-	xCoverage, yCoverage = 0, 0
-	finalPoints = []
-	for i in range(10):
-		point = [randint(xCoverage,xCoverage+2)]
-		point.append(randint(yCoverage,yCoverage+2))
+# def generateData():
+# 	xCoverage, yCoverage = 0, 0
+# 	finalPoints = []
+# 	for i in range(1000):
+# 		point = [randint(xCoverage,xCoverage+200)]
+# 		point.append(randint(yCoverage,yCoverage+200))
+# 		finalPoints.append(point)
+# 		for j in range(1000):
+# 			point = [randint(xCoverage+100,xCoverage+200)]
+# 			point.append(randint(yCoverage+100,yCoverage+200))
+# 			finalPoints.append(point)
+# 			yCoverage= yCoverage+200
+# 		xCoverage, yCoverage=xCoverage+200, 0
+
+# 	print (finalPoints)
+
+# 	print("#################################################")
+# 	# adds m more points
+# 	for i in range(len(finalPoints)):
+# 		point = [randint(0,2000),randint(0,2000)]
+# 		finalPoints.append(point)
+
+# 	print (finalPoints)
+# 	return finalPoints
+
+
+
+xCoverage, yCoverage = 0, 0
+finalPoints = []
+for i in range(1000):
+	point = [randint(xCoverage,xCoverage+200)]
+	point.append(randint(yCoverage,yCoverage+200))
+	finalPoints.append(point)
+	for j in range(1000):
+		point = [randint(xCoverage+100,xCoverage+200)]
+		point.append(randint(yCoverage+100,yCoverage+200))
 		finalPoints.append(point)
-		for j in range(10):
-			point = [randint(xCoverage+1,xCoverage+2)]
-			point.append(randint(yCoverage+1,yCoverage+2))
-			finalPoints.append(point)
-			yCoverage= yCoverage+2
-		xCoverage, yCoverage=xCoverage+2, 0
+		yCoverage= yCoverage+200
+	xCoverage, yCoverage=xCoverage+200, 0
 
-	print (finalPoints)
+print (finalPoints)
 
-	print("#################################################")
+print("#################################################")
 	# adds m more points
-	for i in range(len(finalPoints)):
-		point = [randint(0,20),randint(0,20)]
-		finalPoints.append(point)
+for i in range(len(finalPoints)):
+	point = [randint(0,2000),randint(0,2000)]
+	finalPoints.append(point)
 
-	print (finalPoints)
-	return finalPoints
+print (finalPoints)
+
+text_file = open("data.txt", "a")
+text_file.write("\n Length %s" % finalPoints)
+text_file.close()
+	
+
 
 ##################################################################################
 # Part 2                                                                         #
@@ -52,32 +83,32 @@ def generateData():
 
 
 def heurestic_ONE():
-	finalPoints = generateData()
+#	finalPoints = generateData()
 	apList = list()
 	x=finalPoints[0]
 	apList.append(x)
-	XCoverage, YCoverage = x[0]+2, x[1]+2
+	XCoverage, YCoverage = x[0]+200, x[1]+200
 	xpt = x[0]
 	
 	for i in range(len(finalPoints)):
 		x=finalPoints[i]
-		if x[1] -2 <=YCoverage and x not in apList and YCoverage<20 and x[1]>YCoverage:
-			YCoverage = YCoverage + 2
+		if x[1] -200 <=YCoverage and x not in apList and YCoverage<2000 and x[1]>YCoverage:
+			YCoverage = YCoverage + 200
 			apList.append(x)
 
-	while XCoverage <20:
-		YCoverage = 2
+	while XCoverage <2000:
+		YCoverage = 200
 		for i in range(len(finalPoints)):
 			x = list(finalPoints[i])
-			if(x[0]-2 <=XCoverage and x not in apList and x[0]>XCoverage and XCoverage<20):
-				XCoverage = x[0] + 2
-				YCoverage = x[1] + 2
+			if(x[0]-200 <=XCoverage and x not in apList and x[0]>XCoverage and XCoverage<2000):
+				XCoverage = x[0] + 200
+				YCoverage = x[1] + 200
 				apList.append(x)
 
 		for i in range(len(finalPoints)):
 			x=list(finalPoints[i])
-			if(x[1]-2 <= YCoverage and x[1] > YCoverage  and x not in apList and YCoverage<20):
-				YCoverage = YCoverage+2
+			if(x[1]-200 <= YCoverage and x[1] > YCoverage  and x not in apList and YCoverage<200):
+				YCoverage = YCoverage+200
 				apList.append(x)
 
 
@@ -100,34 +131,34 @@ def heurestic_ONE():
 
 
 def heurestic_TWO():
-	finalPoints = generateData()
+#	finalPoints = generateData()
 	print("################heurestic_TWO################")
 	finalList = finalPoints
 	finalList = sorted(finalPoints)
 	apList = list()
 	x=finalList[0]
 	apList.append(x)
-	XCoverage, YCoverage = x[0]+2, x[1]+2
+	XCoverage, YCoverage = x[0]+200, x[1]+200
 	xpt = x[0]
 	for i in range(1,len(finalList)):
 		x = finalList[i]
-		if(YCoverage < 20 and x not in apList and x[1] -3 == YCoverage and x[1]>YCoverage):
-			YCoverage = YCoverage +2
+		if(YCoverage < 2000 and x not in apList and x[1] -300 == YCoverage and x[1]>YCoverage):
+			YCoverage = YCoverage +200
 			apList.append(x)
 
-	while XCoverage <20:
-		YCoverage = 2
+	while XCoverage <2000:
+		YCoverage = 200
 		for i in range(len(finalList)):
 			x = list(finalList[i])
-			if(x[0]-2 <=XCoverage and x not in apList and x[0]>XCoverage and XCoverage<20):
-				XCoverage = x[0] + 2
-				YCoverage = x[1] + 2
+			if(x[0]-200 <=XCoverage and x not in apList and x[0]>XCoverage and XCoverage<2000):
+				XCoverage = x[0] + 200
+				YCoverage = x[1] + 200
 				apList.append(x)
 
 		for i in range(len(finalList)):
 			x=list(finalList[i])
-			if(x[1]-2 <= YCoverage and x[1] > YCoverage  and x not in apList and YCoverage<20):
-				YCoverage = YCoverage+2
+			if(x[1]-200 <= YCoverage and x[1] > YCoverage  and x not in apList and YCoverage<2000):
+				YCoverage = YCoverage+200
 				apList.append(x)
 
 
@@ -146,33 +177,33 @@ def heurestic_TWO():
 
 
 def heurestic_THREE():
-	finalPoints = generateData()
+#	finalPoints = generateData()
 	finalList = sorted(finalPoints)
 	apList = list()
 	x=finalList[0]
 	apList.append(x)
-	XCoverage, YCoverage = x[0]+3, x[1]+3
+	XCoverage, YCoverage = x[0]+300, x[1]+300
 	xpt = x[0]
 	
 	for i in range(len(finalPoints)):
 		x=finalPoints[i]
-		if x[1] -3 <=YCoverage and x not in apList and YCoverage<20 and x[1]>YCoverage:
-			YCoverage = YCoverage + 3
+		if x[1] -300 <=YCoverage and x not in apList and YCoverage<2000 and x[1]>YCoverage:
+			YCoverage = YCoverage + 300
 			apList.append(x)
 
-	while XCoverage <20:
-		YCoverage = 3
+	while XCoverage <2000:
+		YCoverage = 300
 		for i in range(len(finalPoints)):
 			x = list(finalPoints[i])
-			if(x[0]-3 <=XCoverage and x not in apList and x[0]>XCoverage and XCoverage<20):
-				XCoverage = x[0] + 3
-				YCoverage = x[1] + 3
+			if(x[0]-300 <=XCoverage and x not in apList and x[0]>XCoverage and XCoverage<2000):
+				XCoverage = x[0] + 300
+				YCoverage = x[1] + 300
 				apList.append(x)
 
 		for i in range(len(finalPoints)):
 			x=list(finalPoints[i])
-			if(x[1]-3 <= YCoverage and x[1] > YCoverage  and x not in apList and YCoverage<20):
-				YCoverage = YCoverage+3
+			if(x[1]-300 <= YCoverage and x[1] > YCoverage  and x not in apList and YCoverage<2000):
+				YCoverage = YCoverage+300
 				apList.append(x)
 
 
@@ -188,15 +219,15 @@ class myThread (threading.Thread):
     def run(self):
         # Get lock to synchronize threads
         if(self.threadID == 1):
-        	for i in range(1,100):
-        		print(i)
-	        	heurestic_ONE()
+#        	for i in range(1,100):
+       		print(i)
+        	heurestic_ONE()
         if self.threadID == 2:
-        	for i in range(1,100):
-	        	heurestic_TWO()
-        if self.threadID == 3:
-        	for i in range(1,100):
-	        	heurestic_THREE()
+#        	for i in range(1,100):
+	        heurestic_TWO()
+#        if self.threadID == 3:
+#        	for i in range(1,100):
+	        heurestic_THREE()
         # Free lock to release next thread
 
 
