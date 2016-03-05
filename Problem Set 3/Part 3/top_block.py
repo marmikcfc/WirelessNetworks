@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Sat Mar  5 02:05:50 2016
+# Generated: Sat Mar  5 02:48:26 2016
 ##################################################
 
 if __name__ == '__main__':
@@ -122,7 +122,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.qtgui_const_sink_x_0.set_x_axis(-2, 2)
         self.qtgui_const_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, "")
         self.qtgui_const_sink_x_0.enable_autoscale(False)
-        self.qtgui_const_sink_x_0.enable_grid(False)
+        self.qtgui_const_sink_x_0.enable_grid(True)
         
         if not True:
           self.qtgui_const_sink_x_0.disable_legend()
@@ -155,9 +155,14 @@ class top_block(gr.top_block, Qt.QWidget):
         self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(my_constellation)
         self.digital_chunks_to_symbols_xx_0 = digital.chunks_to_symbols_bc((-1, 1), 1)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_char*1, samp_rate,True)
-        self.blocks_head_0 = blocks.head(gr.sizeof_char*1, 1000000000)
-        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, "/home/ubuntu/trx", False)
-        self.blocks_file_sink_0.set_unbuffered(False)
+        self.blocks_head_0_0 = blocks.head(gr.sizeof_float*1, 100000)
+        self.blocks_head_0 = blocks.head(gr.sizeof_float*1, 100000)
+        self.blocks_file_sink_0_0 = blocks.file_sink(gr.sizeof_int*1, "/home/ubuntu/rx.bin", False)
+        self.blocks_file_sink_0_0.set_unbuffered(True)
+        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_int*1, "/home/ubuntu/trx.bin", False)
+        self.blocks_file_sink_0.set_unbuffered(True)
+        self.blocks_complex_to_real_0_0 = blocks.complex_to_real(1)
+        self.blocks_complex_to_real_0 = blocks.complex_to_real(1)
         self.blocks_add_xx_0 = blocks.add_vcc(1)
         self.blks2_error_rate_0 = grc_blks2.error_rate(
         	type='BER',
@@ -172,14 +177,18 @@ class top_block(gr.top_block, Qt.QWidget):
         ##################################################
         self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))    
         self.connect((self.analog_random_source_x_0, 0), (self.blks2_error_rate_0, 1))    
-        self.connect((self.analog_random_source_x_0, 0), (self.blocks_head_0, 0))    
         self.connect((self.analog_random_source_x_0, 0), (self.blocks_throttle_0, 0))    
         self.connect((self.blks2_error_rate_0, 0), (self.qtgui_time_sink_x_0, 0))    
+        self.connect((self.blocks_add_xx_0, 0), (self.blocks_complex_to_real_0_0, 0))    
         self.connect((self.blocks_add_xx_0, 0), (self.digital_constellation_decoder_cb_0, 0))    
         self.connect((self.blocks_add_xx_0, 0), (self.qtgui_const_sink_x_0, 0))    
+        self.connect((self.blocks_complex_to_real_0, 0), (self.blocks_head_0, 0))    
+        self.connect((self.blocks_complex_to_real_0_0, 0), (self.blocks_head_0_0, 0))    
         self.connect((self.blocks_head_0, 0), (self.blocks_file_sink_0, 0))    
+        self.connect((self.blocks_head_0_0, 0), (self.blocks_file_sink_0_0, 0))    
         self.connect((self.blocks_throttle_0, 0), (self.digital_chunks_to_symbols_xx_0, 0))    
         self.connect((self.digital_chunks_to_symbols_xx_0, 0), (self.blocks_add_xx_0, 0))    
+        self.connect((self.digital_chunks_to_symbols_xx_0, 0), (self.blocks_complex_to_real_0, 0))    
         self.connect((self.digital_constellation_decoder_cb_0, 0), (self.blks2_error_rate_0, 0))    
 
     def closeEvent(self, event):
