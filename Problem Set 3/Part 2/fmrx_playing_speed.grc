@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <?grc format='1' created='3.7.9'?>
 <flow_graph>
-  <timestamp>Sat Mar  5 11:30:27 2016</timestamp>
+  <timestamp>Sun Mar  6 20:43:57 2016</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -46,7 +46,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>fm_rx_with_echo</value>
+      <value>fmrx_play_speed</value>
     </param>
     <param>
       <key>max_nouts</key>
@@ -101,7 +101,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(264, 275)</value>
+      <value>(272, 275)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -152,7 +152,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 307)</value>
+      <value>(16, 307)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -179,7 +179,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 179)</value>
+      <value>(16, 179)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -206,7 +206,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 107)</value>
+      <value>(16, 107)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -241,7 +241,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(512, 275)</value>
+      <value>(520, 275)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -300,7 +300,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(376, 275)</value>
+      <value>(384, 275)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -351,7 +351,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 243)</value>
+      <value>(16, 243)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -394,7 +394,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(120, 195)</value>
+      <value>(128, 195)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -453,7 +453,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(888, 91)</value>
+      <value>(896, 91)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -474,53 +474,6 @@
     <param>
       <key>quad_rate</key>
       <value>480e3</value>
-    </param>
-  </block>
-  <block>
-    <key>audio_sink</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>device_name</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(856, 363)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>audio_sink_0</value>
-    </param>
-    <param>
-      <key>num_inputs</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>ok_to_block</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>samp_rate</key>
-      <value>48000</value>
     </param>
   </block>
   <block>
@@ -602,7 +555,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(864, 171)</value>
+      <value>(872, 171)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -649,7 +602,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(416, 201)</value>
+      <value>(424, 209)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -708,7 +661,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1040, 323)</value>
+      <value>(1000, 323)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -763,7 +716,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(648, 163)</value>
+      <value>(656, 163)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2106,7 +2059,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(184, 19)</value>
+      <value>(192, 19)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2237,7 +2190,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(696, 27)</value>
+      <value>(704, 27)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2308,7 +2261,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(496, 3)</value>
+      <value>(504, 3)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2384,20 +2337,14 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_delay_0</source_block_id>
-    <sink_block_id>blocks_wavfile_sink_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_multiply_const_vxx_0</source_block_id>
-    <sink_block_id>audio_sink_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
     <source_block_id>blocks_multiply_const_vxx_0</source_block_id>
     <sink_block_id>blocks_delay_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_multiply_const_vxx_0</source_block_id>
+    <sink_block_id>blocks_wavfile_sink_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

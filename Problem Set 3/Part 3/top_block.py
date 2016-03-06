@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Sat Mar  5 02:48:26 2016
+# Generated: Sun Mar  6 21:06:17 2016
 ##################################################
 
 if __name__ == '__main__':
@@ -61,7 +61,7 @@ class top_block(gr.top_block, Qt.QWidget):
         # Variables
         ##################################################
         self.samp_rate = samp_rate = 1e6
-        self.my_constellation = my_constellation = digital.constellation_calcdist(([-1, 1]), ([0, 1]), 2, 1).base()
+        self.my_constellation = my_constellation = digital.constellation_calcdist(([-1, -1j,1,1j]), ([0, 1,2,3]), 4, 1).base()
 
         ##################################################
         # Blocks
@@ -121,8 +121,8 @@ class top_block(gr.top_block, Qt.QWidget):
         self.qtgui_const_sink_x_0.set_y_axis(-2, 2)
         self.qtgui_const_sink_x_0.set_x_axis(-2, 2)
         self.qtgui_const_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, "")
-        self.qtgui_const_sink_x_0.enable_autoscale(False)
-        self.qtgui_const_sink_x_0.enable_grid(True)
+        self.qtgui_const_sink_x_0.enable_autoscale(True)
+        self.qtgui_const_sink_x_0.enable_grid(False)
         
         if not True:
           self.qtgui_const_sink_x_0.disable_legend()
@@ -153,13 +153,13 @@ class top_block(gr.top_block, Qt.QWidget):
         self._qtgui_const_sink_x_0_win = sip.wrapinstance(self.qtgui_const_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_layout.addWidget(self._qtgui_const_sink_x_0_win)
         self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(my_constellation)
-        self.digital_chunks_to_symbols_xx_0 = digital.chunks_to_symbols_bc((-1, 1), 1)
+        self.digital_chunks_to_symbols_xx_0 = digital.chunks_to_symbols_bc((1, 1j, -1, -1j), 1)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_char*1, samp_rate,True)
         self.blocks_head_0_0 = blocks.head(gr.sizeof_float*1, 100000)
         self.blocks_head_0 = blocks.head(gr.sizeof_float*1, 100000)
-        self.blocks_file_sink_0_0 = blocks.file_sink(gr.sizeof_int*1, "/home/ubuntu/rx.bin", False)
+        self.blocks_file_sink_0_0 = blocks.file_sink(gr.sizeof_int*1, "/home/ubuntu/rx_qpsk_5.bin", False)
         self.blocks_file_sink_0_0.set_unbuffered(True)
-        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_int*1, "/home/ubuntu/trx.bin", False)
+        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_int*1, "/home/ubuntu/trx_qpsk_5.bin", False)
         self.blocks_file_sink_0.set_unbuffered(True)
         self.blocks_complex_to_real_0_0 = blocks.complex_to_real(1)
         self.blocks_complex_to_real_0 = blocks.complex_to_real(1)
@@ -169,8 +169,8 @@ class top_block(gr.top_block, Qt.QWidget):
         	win_size=1000,
         	bits_per_symbol=1,
         )
-        self.analog_random_source_x_0 = blocks.vector_source_b(map(int, numpy.random.randint(0, 2, 100000)), True)
-        self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, 1, 0)
+        self.analog_random_source_x_0 = blocks.vector_source_b(map(int, numpy.random.randint(0, 4, 100000)), True)
+        self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, 5, 0)
 
         ##################################################
         # Connections

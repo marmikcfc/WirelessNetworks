@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Fm Rx With Echo
-# Generated: Sun Mar  6 20:40:00 2016
+# Generated: Sun Mar  6 20:46:05 2016
 ##################################################
 
 if __name__ == '__main__':
@@ -178,9 +178,9 @@ class fm_rx_with_echo(grc_wxgui.top_block_gui):
         ##################################################
         self.connect((self.analog_sig_source_x_0, 0), (self.blocks_multiply_xx_0, 1))    
         self.connect((self.analog_wfm_rcv_0, 0), (self.blocks_multiply_const_vxx_0, 0))    
-        self.connect((self.blocks_delay_0, 0), (self.audio_sink_0, 0))    
+        self.connect((self.blocks_delay_0, 0), (self.blocks_wavfile_sink_0, 0))    
+        self.connect((self.blocks_multiply_const_vxx_0, 0), (self.audio_sink_0, 0))    
         self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_delay_0, 0))    
-        self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_wavfile_sink_0, 0))    
         self.connect((self.blocks_multiply_xx_0, 0), (self.low_pass_filter_0, 0))    
         self.connect((self.low_pass_filter_0, 0), (self.rational_resampler_xxx_0, 0))    
         self.connect((self.osmosdr_source_0, 0), (self.blocks_multiply_xx_0, 0))    
