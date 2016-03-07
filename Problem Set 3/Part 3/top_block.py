@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Sun Mar  6 21:06:17 2016
+# Generated: Mon Mar  7 02:33:22 2016
 ##################################################
 
 if __name__ == '__main__':
@@ -155,14 +155,12 @@ class top_block(gr.top_block, Qt.QWidget):
         self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(my_constellation)
         self.digital_chunks_to_symbols_xx_0 = digital.chunks_to_symbols_bc((1, 1j, -1, -1j), 1)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_char*1, samp_rate,True)
-        self.blocks_head_0_0 = blocks.head(gr.sizeof_float*1, 100000)
-        self.blocks_head_0 = blocks.head(gr.sizeof_float*1, 100000)
-        self.blocks_file_sink_0_0 = blocks.file_sink(gr.sizeof_int*1, "/home/ubuntu/rx_qpsk_5.bin", False)
-        self.blocks_file_sink_0_0.set_unbuffered(True)
-        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_int*1, "/home/ubuntu/trx_qpsk_5.bin", False)
-        self.blocks_file_sink_0.set_unbuffered(True)
-        self.blocks_complex_to_real_0_0 = blocks.complex_to_real(1)
-        self.blocks_complex_to_real_0 = blocks.complex_to_real(1)
+        self.blocks_head_0_1 = blocks.head(gr.sizeof_char*1, 100000)
+        self.blocks_head_0_0_0 = blocks.head(gr.sizeof_char*1, 100000)
+        self.blocks_file_sink_0_0_1 = blocks.file_sink(gr.sizeof_char*1, "/home/ubuntu/trx_qpsk_30.bin", False)
+        self.blocks_file_sink_0_0_1.set_unbuffered(True)
+        self.blocks_file_sink_0_0_0 = blocks.file_sink(gr.sizeof_char*1, "/home/ubuntu/rx_qpsk_30.bin", False)
+        self.blocks_file_sink_0_0_0.set_unbuffered(True)
         self.blocks_add_xx_0 = blocks.add_vcc(1)
         self.blks2_error_rate_0 = grc_blks2.error_rate(
         	type='BER',
@@ -170,26 +168,24 @@ class top_block(gr.top_block, Qt.QWidget):
         	bits_per_symbol=1,
         )
         self.analog_random_source_x_0 = blocks.vector_source_b(map(int, numpy.random.randint(0, 4, 100000)), True)
-        self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, 5, 0)
+        self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, 30, 0)
 
         ##################################################
         # Connections
         ##################################################
         self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))    
         self.connect((self.analog_random_source_x_0, 0), (self.blks2_error_rate_0, 1))    
+        self.connect((self.analog_random_source_x_0, 0), (self.blocks_head_0_1, 0))    
         self.connect((self.analog_random_source_x_0, 0), (self.blocks_throttle_0, 0))    
         self.connect((self.blks2_error_rate_0, 0), (self.qtgui_time_sink_x_0, 0))    
-        self.connect((self.blocks_add_xx_0, 0), (self.blocks_complex_to_real_0_0, 0))    
         self.connect((self.blocks_add_xx_0, 0), (self.digital_constellation_decoder_cb_0, 0))    
         self.connect((self.blocks_add_xx_0, 0), (self.qtgui_const_sink_x_0, 0))    
-        self.connect((self.blocks_complex_to_real_0, 0), (self.blocks_head_0, 0))    
-        self.connect((self.blocks_complex_to_real_0_0, 0), (self.blocks_head_0_0, 0))    
-        self.connect((self.blocks_head_0, 0), (self.blocks_file_sink_0, 0))    
-        self.connect((self.blocks_head_0_0, 0), (self.blocks_file_sink_0_0, 0))    
+        self.connect((self.blocks_head_0_0_0, 0), (self.blocks_file_sink_0_0_0, 0))    
+        self.connect((self.blocks_head_0_1, 0), (self.blocks_file_sink_0_0_1, 0))    
         self.connect((self.blocks_throttle_0, 0), (self.digital_chunks_to_symbols_xx_0, 0))    
         self.connect((self.digital_chunks_to_symbols_xx_0, 0), (self.blocks_add_xx_0, 0))    
-        self.connect((self.digital_chunks_to_symbols_xx_0, 0), (self.blocks_complex_to_real_0, 0))    
         self.connect((self.digital_constellation_decoder_cb_0, 0), (self.blks2_error_rate_0, 0))    
+        self.connect((self.digital_constellation_decoder_cb_0, 0), (self.blocks_head_0_0_0, 0))    
 
     def closeEvent(self, event):
         self.settings = Qt.QSettings("GNU Radio", "top_block")
